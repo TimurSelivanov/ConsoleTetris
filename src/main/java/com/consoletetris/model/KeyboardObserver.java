@@ -9,6 +9,11 @@ import java.awt.event.KeyListener;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
+/** code in this class was taken from javarush.com
+ * it is needed to implement controlling of the game
+ * with a keyboard
+ */
+
 public class KeyboardObserver extends Thread {
     private Queue<KeyEvent> keyEvents = new ArrayBlockingQueue<KeyEvent>(100);
 
