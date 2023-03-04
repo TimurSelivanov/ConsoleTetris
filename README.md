@@ -1,3 +1,3 @@
 # ConsoleTetris
 
-This going to be simple project to try keyboard controlling feature
+Simple app to try the code from stackoverflow
