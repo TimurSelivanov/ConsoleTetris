@@ -44,7 +44,11 @@ public class Figure {
     }
 
     public void downMaximum() {
+        while (isCurrentPositionAvailable()) {
+            y++;
+        }
 
+        y--;
     }
 
     public boolean isCurrentPositionAvailable() {
