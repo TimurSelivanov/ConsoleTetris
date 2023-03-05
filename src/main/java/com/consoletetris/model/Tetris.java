@@ -69,7 +69,16 @@ public class Tetris {
     }
 
     public void step() {
-        //manage the on step of the game
+        //Figure goes down by one line for one step
+        figure.down();
+
+        //If line is not empty
+        if (!figure.isCurrentPositionAvailable()) {
+            figure.up();                    //go up
+            figure.landed();                //land
+            field.deleteFullLines();        //deleteFullLines
+            figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0); //create new random figure
+        }
     }
     public static void main(String[] args) throws Exception {
         game = new Tetris(); //game object

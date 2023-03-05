@@ -73,7 +73,7 @@ public class Field {
         System.out.println();
     }
 
-    void removeFullLines() {
+    void deleteFullLines() {
         //List for lines
         ArrayList<int[]> lines = new ArrayList<>();
 
