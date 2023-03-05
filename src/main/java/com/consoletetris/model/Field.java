@@ -2,10 +2,18 @@ package com.consoletetris.model;
 
 import java.util.ArrayList;
 
+//This class describes the game field
 public class Field {
     private int width;
     private int height;
+    //Field matrix, 1 is taken,0 is free
     private int[][] matrix;
+
+    public Field(int width, int height) {
+        this.height = height;
+        this.width = width;
+        matrix = new int[height][width];
+    }
 
     public int getWidth() {
         return width;
@@ -19,10 +27,18 @@ public class Field {
         return matrix;
     }
 
-    public Field(int width, int height) {
-        this.height = height;
-        this.width = width;
-        matrix = new int[height][width];
+    //Method return 1 or 0 depends on cell is free or taken
+    public Integer getValue(int x, int y) {
+        if (x >= 0 && x < width && y >= 0 && y < height)
+            return matrix[y][x];
+
+        return null;
+    }
+
+    //Method set 1 or 0 in the cell
+    public void setValue(int x, int y, int value) {
+        if (x >= 0 && x < width && y >= 0 && y < height)
+            matrix[y][x] = value;
     }
 
     void print() {
@@ -97,13 +113,5 @@ public class Field {
 
         //List to array[][]
         matrix = lines.toArray(new int[height][width]);
-    }
-
-    public Integer getValue(int x, int y) {
-        return null;
-    }
-
-    public void setValue(int x, int y, int value) {
-
     }
 }
