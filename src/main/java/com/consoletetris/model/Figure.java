@@ -24,11 +24,15 @@ public class Figure {
     }
 
     public void left() {
-
+        x--;
+        if (!isCurrentPositionAvailable())
+            x++;
     }
 
     public void right() {
-
+        x++;
+        if (!isCurrentPositionAvailable())
+            x--;
     }
 
     public void down() {
