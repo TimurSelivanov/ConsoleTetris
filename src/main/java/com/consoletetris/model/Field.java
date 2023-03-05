@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 //This class describes the game field
 public class Field {
-    private int width;
-    private int height;
+    private final int width;
+    private final int height;
     //Field matrix, 1 is taken,0 is free
     private int[][] matrix;
 
@@ -22,10 +22,6 @@ public class Field {
     public int getHeight() {
         return height;
     }
-
-//    public int[][] getMatrix() {
-//        return matrix;
-//    }
 
     //Method return 1 or 0 depends on cell is free or taken
     public Integer getValue(int x, int y) {
@@ -47,9 +43,7 @@ public class Field {
 
         //Copy matrix to array
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                canvas[i][j] = matrix[i][j];
-            }
+            System.arraycopy(matrix[i], 0, canvas[i], 0, width);
         }
 
         //Copy the figure to array
@@ -64,7 +58,6 @@ public class Field {
                     canvas[top + i][left + j] = 2;
             }
         }
-
 
         //Print array starting from the top
         System.out.println("---------------------------------------------------------------------------\n");
@@ -83,7 +76,6 @@ public class Field {
             }
             System.out.println();
         }
-
 
         System.out.println();
         System.out.println();

@@ -2,13 +2,13 @@ package com.consoletetris.model;
 
 import java.awt.event.KeyEvent;
 
-//the game class with main method
+//The game class with main method
 public class Tetris {
 
-    private Field field;
+    private final Field field;
     private Figure figure;
     static Tetris game;
-    private boolean isGameOver;
+    boolean isGameOver;
 
     public Tetris(int width, int height) {
         field = new Field(width, height);
@@ -23,23 +23,15 @@ public class Tetris {
         return figure;
     }
 
-    public void setField(Field field) {
-        this.field = field;
-    }
-
-    public void setFigure(Figure figure) {
-        this.figure = figure;
-    }
-
     public void run() throws Exception {
         //Create the KeyboardObserver object and invoke the start()
         KeyboardObserver keyboardObserver = new KeyboardObserver();
         keyboardObserver.start();
 
-        //put the false value in isGameOver field
-        isGameOver = false;
         //Creating a random figure at the top center of game field
         figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0);
+        //Initiate isGameOver with false
+        isGameOver = false;
 
         //While game is not over
         while (!isGameOver) {
@@ -78,9 +70,10 @@ public class Tetris {
 
         //If line is not empty
         if (!figure.isCurrentPositionAvailable()) {
-            figure.up();                    //go up
-            figure.landed();                //land
-            field.deleteFullLines();        //deleteFullLines
+            figure.up();                                                              //go up
+            figure.landed();                                                          //land
+            isGameOver = figure.getY() <= 1;                                          //Figure is crossed the top - Game is over
+            field.deleteFullLines();                                                  //deleteFullLines
             figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0); //create new random figure
         }
     }

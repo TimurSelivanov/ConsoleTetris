@@ -1,9 +1,17 @@
 package com.consoletetris.model;
 
 public class Figure {
+    //Figure coordinates
     private int x;
     private int y;
+    //Figure shape
     private int[][] matrix;
+
+    public Figure(int x, int y, int[][] matrix) {
+        this.x = x;
+        this.y = y;
+        this.matrix = matrix;
+    }
 
     public int getX() {
         return x;
@@ -15,12 +23,6 @@ public class Figure {
 
     public int[][] getMatrix() {
         return matrix;
-    }
-
-    public Figure(int x, int y, int[][] matrix) {
-        this.x = x;
-        this.y = y;
-        this.matrix = matrix;
     }
 
     public void left() {
@@ -64,7 +66,19 @@ public class Figure {
         y--;
     }
 
+    public void landed() {
+        Field field = Tetris.game.getField();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == 1)
+                    field.setValue(x + j, y + i, 1);
+            }
+        }
+    }
+
     public boolean isCurrentPositionAvailable() {
+        //Get current field state from the game object
         Field field = Tetris.game.getField();
 
         for (int i = 0; i < 3; i++) {
@@ -81,16 +95,5 @@ public class Figure {
         }
 
         return true;
-    }
-
-    public void landed() {
-        Field field = Tetris.game.getField();
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (matrix[i][j] == 1)
-                    field.setValue(x + j, y + i, 1);
-            }
-        }
     }
 }
