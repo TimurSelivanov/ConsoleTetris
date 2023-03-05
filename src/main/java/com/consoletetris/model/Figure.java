@@ -32,11 +32,11 @@ public class Figure {
     }
 
     public void down() {
-
+        y++;
     }
 
     public void up() {
-
+        y--;
     }
 
     public void rotate() {
