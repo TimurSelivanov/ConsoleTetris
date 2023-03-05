@@ -1,5 +1,7 @@
 package com.consoletetris.model;
 
+import java.util.ArrayList;
+
 public class Field {
     private int width;
     private int height;
@@ -71,8 +73,30 @@ public class Field {
         System.out.println();
     }
 
-    public void removeFullLines() {
+    void removeFullLines() {
+        //List for lines
+        ArrayList<int[]> lines = new ArrayList<>();
 
+        //Copy array[][] to list
+        for (int i = 0; i < height; i++) {
+            //Counter for the lines
+            int count = 0;
+            for (int j = 0; j < width; j++) {
+                count += matrix[i][j];
+            }
+
+            //If the line is not full add it to list
+            if (count != width)
+                lines.add(matrix[i]);
+        }
+
+        //Add lines at the beginning of the list
+        while (lines.size() < height) {
+            lines.add(0, new int[width]);
+        }
+
+        //List to array[][]
+        matrix = lines.toArray(new int[height][width]);
     }
 
     public Integer getValue(int x, int y) {
