@@ -25,6 +25,7 @@ public class FigureFactory {
     };
 
     public static Figure createRandomFigure(int x, int y) {
-        return  null;
+        int index = (int) (Math.random() * 5);
+        return new Figure(x, y, BRICKS[index]);
     }
 }
