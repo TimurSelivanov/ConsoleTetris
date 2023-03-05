@@ -10,6 +10,10 @@ public class Tetris {
     static Tetris game;
     private boolean isGameOver;
 
+    public Tetris(int width, int height) {
+        field = new Field(width, height);
+        figure = null;
+    }
 
     public Field getField() {
         return field;
@@ -81,7 +85,7 @@ public class Tetris {
         }
     }
     public static void main(String[] args) throws Exception {
-        game = new Tetris(); //game object
+        game = new Tetris(10, 20); //game object
         game.run(); //starts the game
     }
 }

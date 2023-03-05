@@ -23,9 +23,9 @@ public class Field {
         return height;
     }
 
-    public int[][] getMatrix() {
-        return matrix;
-    }
+//    public int[][] getMatrix() {
+//        return matrix;
+//    }
 
     //Method return 1 or 0 depends on cell is free or taken
     public Integer getValue(int x, int y) {
@@ -52,7 +52,7 @@ public class Field {
             }
         }
 
-        //Copy figure to array
+        //Copy the figure to array
         int left = Tetris.game.getFigure().getX();
         int top = Tetris.game.getFigure().getY();
         int[][] brickMatrix = Tetris.game.getFigure().getMatrix();
