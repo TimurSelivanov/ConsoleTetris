@@ -19,6 +19,14 @@ public class Tetris {
         return figure;
     }
 
+    public void setField(Field field) {
+        this.field = field;
+    }
+
+    public void setFigure(Figure figure) {
+        this.figure = figure;
+    }
+
     public void run() throws Exception {
         //Create the KeyboardObserver object and invoke the start()
         KeyboardObserver keyboardObserver = new KeyboardObserver();
