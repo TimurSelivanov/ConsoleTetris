@@ -48,6 +48,21 @@ public class Figure {
     }
 
     public boolean isCurrentPositionAvailable() {
+        Field field = Tetris.game.getField();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == 1) {
+                    if (y + i >= field.getHeight())
+                        return false;
+
+                    Integer value = field.getValue(x + j, y + i);
+                    if (value == null || value == 1)
+                        return false;
+                }
+            }
+        }
+
         return true;
     }
 
