@@ -1,4 +1,4 @@
-# ConsoleTetris
+## ConsoleTetris
 
 This simple game application works on the console.
 
